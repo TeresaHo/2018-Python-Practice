@@ -33,7 +33,7 @@ def save_video(filepath, fps, w, h, frames):
     '''
       If you cannot write video file, you may change the used codec
     '''
-    used_codec = codecs[2]  # change the index from codecs
+    used_codec = codecs[3]  # change the index from codecs
     fourcc = cv2.VideoWriter_fourcc(*used_codec)
     out = cv2.VideoWriter(filepath, fourcc, fps, (w, h))
     for frame in frames:

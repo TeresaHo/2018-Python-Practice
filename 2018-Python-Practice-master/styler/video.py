@@ -26,11 +26,32 @@ class Video:
          - Also assign frames to "self" object
          - Return your results
         '''
-        frames = []
         # 5-1 /5-2 Read video and collect them
+        
+        
+        # Read until video is completed
+        while(self.cap.isOpened()):       
+            ret, frame = self.cap.read()
+            if ret == True: 
+                frame_r=resize(frame,image_h,image_w)
+                cv2.imshow('Frame',frame)
+                self.frames.append(frame_r)
+                if cv2.waitKey(25) & 0xFF == ord('q'):
+                    break
+            else :
+                break
+                
+        # Press Q on keyboard to  exit
+            
+            
+        # When everything done, release the video capture object
+        
+        # Closes all the frames
+        cv2.destroyAllWindows()
+        
 
-        self.frames = ...  # 5-3 let object have the result
-        return ...  # return your results
+        #self.frames = ...  # 5-3 let object have the result
+        return self.frames  # return your results
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.cap.release()
